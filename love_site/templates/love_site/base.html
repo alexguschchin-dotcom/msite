@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Для самой особенной 💖 | Наш 2025</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(135deg, #1a237e, #311b92);
+            color: #fff;
+            min-height: 100vh;
+            padding-top: 70px;
+            text-align: center;
+        }
+        nav {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            padding: 18px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: #ffd700; }
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 30px;
+        }
+        .countdown {
+            font-size: 3.2em;
+            color: #ffd700;
+            margin: 30px 0;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            font-family: monospace;
+        }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff4081, #f50057);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            margin: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 6px 15px rgba(255, 64, 129, 0.4);
+            transition: transform 0.3s;
+        }
+        .btn:hover { transform: translateY(-5px); }
+        .memory-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 25px;
+            margin: 25px auto;
+            max-width: 800px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+        footer {
+            margin-top: 50px;
+            padding: 25px;
+            color: rgba(255, 255, 255, 0.7);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">🏠 Главная</a>
+        <a href="/memories/">📖 Воспоминания</a>
+        <a href="/gallery/">🖼️ Галерея</a>
+        <a href="/secret/">🔒 Секрет</a>
+    </nav>
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <footer>
+        Создано с бесконечной нежностью. Встретим 2026 год вместе. ❤️
+    </footer>
+
+    {% block scripts %}
+    {% endblock %}
+</body>
+</html>

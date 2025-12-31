@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наши воспоминания 📖</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #fef9e7 0%, #fdf2e9 100%);
+            color: #333;
+            line-height: 1.7;
+        }
+        .navbar {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+        .nav-links a {
+            color: #8b5cf6;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 600;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        h1 {
+            text-align: center;
+            color: #5d4037;
+            margin-bottom: 2rem;
+            font-size: 2.8rem;
+        }
+        .memory-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+            border-left: 6px solid #8b5cf6;
+        }
+        .memory-card h3 {
+            color: #5d4037;
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+        }
+        .memory-card img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin: 1rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .date {
+            color: #888;
+            font-style: italic;
+            margin-top: 1rem;
+            display: block;
+        }
+        .empty-message {
+            text-align: center;
+            padding: 4rem;
+            color: #888;
+            font-size: 1.2rem;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #888;
+            margin-top: 4rem;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/main/" style="font-size: 1.2rem; font-weight: bold; color: #8b5cf6;">← На главную</a>
+        <div class="nav-links">
+            <a href="/gallery/">Галерея</a>
+            <a href="/treasure/">Сокровище</a>
+            <a href="/our-photos/">Наши фото</a>
+            <a href="/secret/">Секрет</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>📖 Наши воспоминания</h1>
+        
+        {% for memory in memories %}
+        <div class="memory-card">
+            <h3>{{ memory.title }}</h3>
+            <p>{{ memory.text|linebreaksbr }}</p>
+            {% if memory.image %}
+            <img src="{{ memory.image.url }}" alt="{{ memory.title }}" style="max-height: 400px;">
+            {% endif %}
+            <span class="date">{{ memory.created_date|date:"d E Y, H:i" }}</span>
+        </div>
+        {% empty %}
+        <div class="empty-message">
+            <p>Пока здесь нет воспоминаний.</p>
+            <p>Добавьте первое через <a href="/admin/" style="color:#8b5cf6;">админ-панель</a>!</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <footer>
+        <p>Храните моменты, которые делают вас счастливыми. ❤️</p>
+    </footer>
+</body>
+</html>

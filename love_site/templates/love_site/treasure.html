@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Маленькое сокровище 👶💝</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #fff0f5 0%, #f0f8ff 100%);
+            color: #333;
+            line-height: 1.6;
+            padding-bottom: 3rem;
+        }
+        .header {
+            text-align: center;
+            padding: 3rem 2rem 2rem;
+            background: linear-gradient(90deg, #ffb6c1, #87cefa);
+            color: white;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .header h1 {
+            font-size: 3.2rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        .header p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.7rem 1.5rem;
+            background: white;
+            color: #ff69b4;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        .back-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        .intro-text {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 3rem;
+            padding: 0 1rem;
+        }
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .photo-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            border: 8px solid white;
+            position: relative;
+        }
+        .photo-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        .photo-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            border-bottom: 3px solid #ffebee;
+        }
+        .photo-info {
+            padding: 1.5rem;
+        }
+        .photo-info h3 {
+            color: #e91e63;
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+        }
+        .photo-info p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        .no-photos {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 4rem 2rem;
+            background: #f9f9f9;
+            border-radius: 20px;
+            border: 2px dashed #ccc;
+        }
+        .no-photos p {
+            font-size: 1.2rem;
+            color: #888;
+            margin-bottom: 1.5rem;
+        }
+        .admin-hint {
+            background: #e3f2fd;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #1565c0;
+            text-align: center;
+        }
+        .decoration {
+            text-align: center;
+            font-size: 2.5rem;
+            margin: 2rem 0;
+            color: #ffb6c1;
+        }
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 2rem;
+            color: #888;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+        }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2.5rem; }
+            .photo-grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>👶 Маленькое сокровище 💖</h1>
+        <p>Самый дорогой и светлый лучик солнца в твоей жизни. Этот уголок — для него.</p>
+        <div style="margin-top: 1.5rem;">
+            <a href="/main/" class="back-link">← На главную</a>
+            <a href="/our-photos/" class="back-link" style="margin-left: 1rem; background: #ff4757; color: white;">💑 Наши фото</a>
+            <a href="/gallery/" class="back-link" style="margin-left: 1rem; background: #10b981; color: white;">🖼️ Галерея</a>
+        </div>
+    </header>
+
+    <div class="gallery-container">
+        <div class="intro-text">
+            <p>Здесь можно хранить самые милые и важные моменты. Каждая фотография — это история счастья, которое он приносит.</p>
+        </div>
+
+        <div class="decoration">
+            🌟 🧸 🎀 👑 🎈
+        </div>
+
+        <div class="photo-grid">
+            {% for photo in photos %}
+            <div class="photo-card">
+                <img src="{{ photo.image.url }}" alt="{{ photo.title }}" loading="lazy">
+                <div class="photo-info">
+                    <h3>{{ photo.title }}</h3>
+                    <p>{{ photo.description }}</p>
+                    <small>Добавлено: {{ photo.uploaded_date|date:"d.m.Y" }}</small>
+                </div>
+            </div>
+            {% empty %}
+            <div class="no-photos">
+                <p>Пока здесь нет фотографий маленького сокровища.</p>
+                <p>Добавьте их через <a href="/admin/" style="color:#e91e63; font-weight:bold;">админ-панель</a>, чтобы наполнить этот раздел теплом!</p>
+                <div class="admin-hint">
+                    💡 Подсказка: в админке зайдите в раздел <strong>Baby photos</strong> и нажмите <strong>ADD BABY PHOTO</strong>.
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <footer>
+        <p>Создано с нежностью. Пусть каждый день будет наполнен улыбками этого маленького чуда. 🌈</p>
+        <p style="margin-top: 0.5rem;">&copy; Наш 2025 год</p>
+    </footer>
+</body>
+</html>

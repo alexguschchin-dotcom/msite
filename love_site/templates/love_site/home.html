@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Для тебя... ✨</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+        .snowflake {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+        .container {
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            max-width: 800px;
+            margin: 20px;
+        }
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ffd700, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .countdown {
+            font-size: 4em;
+            font-family: 'Courier New', monospace;
+            margin: 30px 0;
+            color: #ffd700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.6);
+        }
+        .heart { color: #ff6b6b; animation: pulse 1.5s infinite; }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5em; }
+            .countdown { font-size: 2.5em; }
+            .container { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💖 С Новым 2026 Годом, Принцесса! 💖</h1>
+        <p style="font-size: 1.3em; margin: 20px 0; line-height: 1.6;">
+            Этот год подарил мне самое ценное — тебя. Пусть следующий будет ещё прекраснее, 
+            а расстояние между нами станет короче с каждым днём. 
+        </p>
+        
+        <div class="countdown" id="countdown">00:00:00:00</div>
+        
+        <p style="font-size: 1.1em; margin-bottom: 20px; color: #e6e6ff;">
+            Когда отсчёт закончится, откроется наш особенный сайт... <br>
+            Или нажми кнопку, если не хочешь ждать <span class="heart">❤️</span>
+        </p>
+        
+        <a href="/main/" class="btn">✨ Открыть наш сайт сейчас ✨</a>
+    </div>
+
+    <script>
+        // Снежинки
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            const size = Math.random() * 10 + 5;
+            snowflake.style.width = `${size}px`;
+            snowflake.style.height = `${size}px`;
+            snowflake.style.left = `${Math.random() * 100}vw`;
+            snowflake.style.opacity = Math.random() * 0.7 + 0.3;
+            snowflake.style.animationDuration = `${Math.random() * 3 + 5}s`;
+            document.body.appendChild(snowflake);
+            setTimeout(() => snowflake.remove(), 8000);
+        }
+        setInterval(createSnowflake, 150);
+
+        // Отсчёт
+        function updateCountdown() {
+            const target = new Date('January 1, 2026 00:00:00 GMT+03:00').getTime();
+            const now = new Date().getTime();
+            const diff = target - now;
+            
+            if (diff <= 0) {
+                document.getElementById('countdown').innerHTML = "🎉 С НОВЫМ ГОДОМ! 🎉";
+                setTimeout(() => window.location.href = "/main/", 2000);
+                return;
+            }
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('countdown').textContent = 
+                `${String(days).padStart(2, '0')}:${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>

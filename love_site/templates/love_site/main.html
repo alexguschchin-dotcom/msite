@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наш 2025 год ❤️</title>
+    <style>
+        :root {
+            --primary: #8b5cf6;
+            --secondary: #f59e0b;
+            --accent: #10b981;
+            --dark: #1f2937;
+            --light: #f9fafb;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fdfcfb 0%, #f5f7fa 100%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        .navbar {
+            background: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            padding: 1.2rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .nav-links a:hover {
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: white;
+            transform: translateY(-2px);
+        }
+        .hero {
+            text-align: center;
+            padding: 5rem 2rem;
+            background: linear-gradient(rgba(139, 92, 246, 0.05), rgba(245, 158, 11, 0.05));
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            color: #4b5563;
+        }
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--dark);
+            position: relative;
+        }
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        .card p {
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
+        }
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--dark);
+            color: white;
+            margin-top: 4rem;
+        }
+        .hearts {
+            animation: heartbeat 1.5s infinite;
+            display: inline-block;
+        }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { gap: 1rem; }
+            .section { padding: 3rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="logo">Наш 2025 💫</div>
+        <div class="nav-links">
+            <a href="/main/"><span>🏠</span> Главная</a>
+            <a href="/memories/"><span>📖</span> Воспоминания</a>
+            <a href="/gallery/"><span>🖼️</span> Галерея</a>
+            <a href="/treasure/"><span>👶</span> Маленькое сокровище</a>
+            <a href="/our-photos/"><span>💑</span> Наши фото</a>
+            <a href="/secret/"><span>🔒</span> Секретное послание</a>
+        </div>
+    </nav>
+
+    <!-- Главный экран -->
+    <section class="hero">
+        <h1>Добро пожаловать в нашу историю</h1>
+        <p>Этот сайт — хранилище самых тёплых моментов, которые подарил нам уходящий год. 
+           Здесь живут наши улыбки, разговоры до рассвета и надежды на будущее.</p>
+        <a href="/memories/" class="btn">Начать путешествие</a>
+    </section>
+
+    <!-- Разделы сайта -->
+    <section class="section">
+        <h2 class="section-title">Что ты найдёшь здесь</h2>
+        <div class="cards-grid">
+            <a href="/memories/" class="card">
+                <div class="card-icon">📝</div>
+                <h3>Наши воспоминания</h3>
+                <p>Записи о самых важных моментах, которые мы пережили вместе, даже на расстоянии.</p>
+                <div class="btn">Открыть</div>
+            </a>
+            <a href="/gallery/" class="card">
+                <div class="card-icon">📸</div>
+                <h3>Фотогалерея</h3>
+                <p>Лучшие кадры, которые сохранили эмоции этого года. Тут наша улыбка.</p>
+                <div class="btn">Смотреть</div>
+            </a>
+            <a href="/treasure/" class="card">
+                <div class="card-icon">🌟</div>
+                <h3>Маленькое сокровище</h3>
+                <p>Самый дорогой человек в твоей жизни. Этот раздел — для него.</p>
+                <div class="btn">Увидеть</div>
+            </a>
+            <a href="/secret/" class="card">
+                <div class="card-icon">💌</div>
+                <h3>Секретное послание</h3>
+                <p>Особенные слова, которые ждут своего часа. Только для тебя.</p>
+                <div class="btn">Прочитать</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <p>Создано с бесконечной нежностью и верой в наше будущее.</p>
+        <p>2025 год стал началом нашей истории. <span class="hearts">💖💖💖</span></p>
+        <p style="margin-top: 1rem; font-size: 0.9em; opacity: 0.8;">Сайт будет доступен всегда, как и мои чувства.</p>
+    </footer>
+
+    <script>
+        // Плавное появление карточек
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>
