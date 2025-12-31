@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Memory, BabyPhoto, OurPhoto
 
 def home(request):
-    return render(request, 'love_site/home.html')
+     return render(request, 'love_site/home.html')
 
 def main_site(request):
     return render(request, 'love_site/main.html')
