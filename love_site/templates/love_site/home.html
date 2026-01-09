@@ -2,145 +2,209 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <!-- Этот метатег ОБЯЗАТЕЛЕН для красивого вида на телефоне -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Для тебя... ✨</title>
+    <title>Для самой особенной 💐 | Наше продолжение</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Georgia', serif;
+        }
+
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
-            color: white;
+            background: linear-gradient(135deg, #fdf6f0 0%, #f8edeb 100%);
+            color: #5a4a42;
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            overflow: hidden;
-            position: relative;
+            padding: 20px;
+            overflow-x: hidden;
         }
-        .snowflake {
+
+        .petal {
             position: absolute;
-            background: white;
-            border-radius: 50%;
-            opacity: 0.8;
-            animation: fall linear infinite;
+            background: #ffb7c5;
+            border-radius: 50% 0 50% 50%;
+            opacity: 0.7;
+            animation: float linear infinite;
         }
-        @keyframes fall {
-            to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+
+        @keyframes float {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
         }
-        .container {
-            z-index: 10;
-            background: rgba(255, 255, 255, 0.1);
+
+        .main-container {
+            background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(10px);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            max-width: 800px;
-            margin: 20px;
+            padding: 3rem;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 25px 50px rgba(166, 140, 121, 0.15);
+            text-align: center;
+            max-width: 850px;
+            width: 100%;
+            position: relative;
+            z-index: 10;
         }
+
         h1 {
-            font-size: 3.5em;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #ffd700, #ff6b6b, #4ecdc4);
+            font-size: 3.3rem;
+            margin-bottom: 1.2rem;
+            background: linear-gradient(45deg, #d4877c, #e8a798);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            line-height: 1.2;
         }
-        .countdown {
-            font-size: 4em;
-            font-family: 'Courier New', monospace;
-            margin: 30px 0;
-            color: #ffd700;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #8b7355;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            font-weight: 300;
         }
+
+        .heart {
+            color: #ff6b8b;
+            animation: heartbeat 1.8s ease-in-out infinite;
+            display: inline-block;
+            margin: 0 8px;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        .poem {
+            font-size: 1.25rem;
+            line-height: 1.9;
+            color: #7a6a5f;
+            margin: 2.5rem auto;
+            max-width: 700px;
+            font-style: italic;
+            background: rgba(255, 248, 242, 0.6);
+            padding: 2rem;
+            border-radius: 20px;
+            border-left: 5px solid #e8a798;
+        }
+
         .btn {
             display: inline-block;
-            margin-top: 30px;
-            padding: 15px 40px;
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            background: linear-gradient(45deg, #e8a798, #d4877c);
             color: white;
             text-decoration: none;
+            padding: 18px 45px;
             border-radius: 50px;
-            font-size: 1.2em;
-            font-weight: bold;
-            transition: all 0.3s;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            box-shadow: 0 10px 25px rgba(232, 167, 152, 0.4);
+            transition: all 0.4s ease;
             border: none;
             cursor: pointer;
+            letter-spacing: 0.5px;
         }
+
         .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.6);
+            transform: translateY(-7px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(232, 167, 152, 0.6);
         }
-        .heart { color: #ff6b6b; animation: pulse 1.5s infinite; }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+
+        .footer-note {
+            margin-top: 3rem;
+            color: #b8a99a;
+            font-size: 1rem;
+            border-top: 1px solid #f0e6e0;
+            padding-top: 1.5rem;
         }
+
+        /* ========== АДАПТИВНОСТЬ ДЛЯ ТЕЛЕФОНОВ ========== */
+        /* Стили для экранов уже, чем 768px (планшеты и телефоны) */
         @media (max-width: 768px) {
-            h1 { font-size: 2.5em; }
-            .countdown { font-size: 2.5em; }
-            .container { padding: 25px; }
+            .main-container {
+                padding: 2rem;
+                border-radius: 25px;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+            .subtitle {
+                font-size: 1.3rem;
+            }
+            .poem {
+                font-size: 1.1rem;
+                padding: 1.5rem;
+            }
+            .btn {
+                padding: 16px 35px;
+                font-size: 1.1rem;
+                width: 100%; /* Кнопка на всю ширину на телефоне */
+            }
+        }
+
+        /* Стили для очень маленьких экранов (уже 480px) */
+        @media (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
+            .main-container {
+                padding: 1.8rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            .poem {
+                font-size: 1rem;
+                padding: 1.2rem;
+                margin: 2rem auto;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>💖 С Новым 2026 Годом, Принцесса! 💖</h1>
-        <p style="font-size: 1.3em; margin: 20px 0; line-height: 1.6;">
-            Этот год подарил мне самое ценное — тебя. Пусть следующий будет ещё прекраснее, 
-            а расстояние между нами станет короче с каждым днём. 
-        </p>
-        
-        <div class="countdown" id="countdown">00:00:00:00</div>
-        
-        <p style="font-size: 1.1em; margin-bottom: 20px; color: #e6e6ff;">
-            Когда отсчёт закончится, откроется наш особенный сайт... <br>
-            Или нажми кнопку, если не хочешь ждать <span class="heart">❤️</span>
-        </p>
-        
-        <a href="/main/" class="btn">✨ Открыть наш сайт сейчас ✨</a>
-    </div>
-
+    <!-- Анимация лепестков -->
     <script>
-        // Снежинки
-        function createSnowflake() {
-            const snowflake = document.createElement('div');
-            snowflake.classList.add('snowflake');
-            const size = Math.random() * 10 + 5;
-            snowflake.style.width = `${size}px`;
-            snowflake.style.height = `${size}px`;
-            snowflake.style.left = `${Math.random() * 100}vw`;
-            snowflake.style.opacity = Math.random() * 0.7 + 0.3;
-            snowflake.style.animationDuration = `${Math.random() * 3 + 5}s`;
-            document.body.appendChild(snowflake);
-            setTimeout(() => snowflake.remove(), 8000);
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
+            const size = Math.random() * 20 + 10;
+            petal.style.width = `${size}px`;
+            petal.style.height = `${size}px`;
+            petal.style.left = `${Math.random() * 100}vw`;
+            petal.style.opacity = Math.random() * 0.6 + 0.3;
+            petal.style.animationDuration = `${Math.random() * 4 + 6}s`;
+            document.body.appendChild(petal);
+            setTimeout(() => petal.remove(), 10000);
         }
-        setInterval(createSnowflake, 150);
-
-        // Отсчёт
-        function updateCountdown() {
-            const target = new Date('January 1, 2026 00:00:00 GMT+03:00').getTime();
-            const now = new Date().getTime();
-            const diff = target - now;
-            
-            if (diff <= 0) {
-                document.getElementById('countdown').innerHTML = "🎉 С НОВЫМ ГОДОМ! 🎉";
-                setTimeout(() => window.location.href = "/main/", 2000);
-                return;
-            }
-            
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-            
-            document.getElementById('countdown').textContent = 
-                `${String(days).padStart(2, '0')}:${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-        }
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
+        // Создаём лепестки
+        setInterval(createPetal, 300);
     </script>
+
+    <div class="main-container">
+        <h1>Весна в душе <span class="heart">💖</span> и в каждом дне</h1>
+
+        <p class="subtitle">
+            Холода отступают, и с каждым лучом солнца мои мысли согреваются теплом о тебе.<br>
+            Этот сайт — наше тёплое местечко, которое будет ждать тебя всегда.
+        </p>
+
+        <a href="/main/" class="btn">✨ Перейти в наше уютное пространство ✨</a>
+
+        <p class="footer-note">
+            Создано с бесконечным терпением и верой в наше общее завтра.<br>
+            Там, где ты, — там уже весна. <span class="heart">🌷</span>
+        </p>
+    </div>
 </body>
 </html>
