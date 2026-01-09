@@ -1,165 +1,16 @@
 {% extends 'love_site/base.html' %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Наши фото вместе 💑</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', 'Comic Sans MS', cursive, sans-serif;
-            background: linear-gradient(135deg, #fff5f5 0%, #fff0f5 100%);
-            color: #333;
-            line-height: 1.6;
-            padding-bottom: 3rem;
-        }
-        .header {
-            text-align: center;
-            padding: 3rem 2rem 2rem;
-            background: linear-gradient(90deg, #ff6b6b, #ff8e8e);
-            color: white;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        .header h1 {
-            font-size: 3.2rem;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-        .header p {
-            font-size: 1.3rem;
-            max-width: 700px;
-            margin: 0 auto;
-            opacity: 0.95;
-        }
-        .back-link {
-            display: inline-block;
-            margin-top: 2rem;
-            padding: 0.7rem 1.5rem;
-            background: white;
-            color: #ff6b6b;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-        }
-        .back-link:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
-        .gallery-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-        .intro-text {
-            text-align: center;
-            font-size: 1.2rem;
-            color: #555;
-            margin-bottom: 3rem;
-            padding: 0 1rem;
-        }
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-        .photo-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s ease;
-            border: 8px solid white;
-            position: relative;
-        }
-        .photo-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-        .photo-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            display: block;
-            border-bottom: 3px solid #ffe6e6;
-        }
-        .photo-info {
-            padding: 1.5rem;
-        }
-        .photo-info h3 {
-            color: #ff4757;
-            margin-bottom: 0.5rem;
-            font-size: 1.4rem;
-        }
-        .photo-info p {
-            color: #666;
-            font-size: 0.95rem;
-        }
-        .no-photos {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 4rem 2rem;
-            background: #f9f9f9;
-            border-radius: 20px;
-            border: 2px dashed #ccc;
-        }
-        .no-photos p {
-            font-size: 1.2rem;
-            color: #888;
-            margin-bottom: 1.5rem;
-        }
-        .admin-hint {
-            background: #ffe6e6;
-            padding: 1rem;
-            border-radius: 10px;
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            color: #ff4757;
-            text-align: center;
-        }
-        .decoration {
-            text-align: center;
-            font-size: 2.5rem;
-            margin: 2rem 0;
-            color: #ff6b6b;
-        }
-        .heart-decoration {
-            color: #ff6b6b;
-            animation: heartbeat 1.5s infinite;
-            display: inline-block;
-        }
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-        footer {
-            text-align: center;
-            margin-top: 4rem;
-            padding: 2rem;
-            color: #888;
-            font-size: 0.9rem;
-            border-top: 1px solid #eee;
-        }
-        @media (max-width: 768px) {
-            .header h1 { font-size: 2.5rem; }
-            .photo-grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; }
-        }
-    </style>
-</head>
-<body>
-    <header class="header">
-        <h1>💑 Наши фото</h1>
-        <p>Этот раздел для наших совместных фото.</p>
-        <a href="/main/" class="back-link">← Вернуться на главную</a>
+<!-- Уникальное содержимое "Наши фото" -->
+<div class="our-photos-container">
+    <header class="our-header">
+        <h1>💑 Наши фото вместе</h1>
+        <p>Моменты, которые мы сохранили. Этот раздел — для наших совместных фото.</p>
+        <a href="/main/" class="back-btn">← Вернуться на главную</a>
     </header>
 
     <div class="gallery-container">
         <div class="intro-text">
-            <p>Здесь хранятся наши фотографии.</p>
+            <p>Здесь хранятся фотографии, на которых мы вместе. Каждая из них — частичка нашего общего счастья.</p>
         </div>
 
         <div class="decoration">
@@ -179,19 +30,179 @@
             {% empty %}
             <div class="no-photos">
                 <p>Пока здесь нет наших совместных фотографий.</p>
-                <p>Добавьте их через <a href="/admin/" style="color:#ff4757; font-weight:bold;">админ-панель</a>, чтобы наполнить этот раздел теплом!</p>
+                <p>Добавьте их через <a href="/admin/">админ-панель</a>!</p>
                 <div class="admin-hint">
-                    💡 Подсказка: в админке зайдите в раздел <strong>Наши фото</strong> и нажмите <strong>ДОБАВИТЬ НАШЕ ФОТО</strong>.
+                    💡 В админке: раздел <strong>Наши фото</strong> → <strong>ДОБАВИТЬ НАШЕ ФОТО</strong>.
                 </div>
             </div>
             {% endfor %}
         </div>
     </div>
+</div>
 
-    <footer>
-        <p>Создано с любовью. Пусть наша коллекция наших фото растёт с каждым днём. <span class="heart-decoration">❤️</span></p>
-        <p style="margin-top: 0.5rem;">&copy; Наш 2025 год</p>
-    </footer>
-</body>
-</html>
+<style>
+    /* Стили ТОЛЬКО для "Наши фото" */
+    .our-photos-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem 3rem;
+    }
+    .our-header {
+        text-align: center;
+        padding: 3rem 2rem 2rem;
+        background: linear-gradient(135deg, #ff8e8e, #ffb6c1);
+        color: white;
+        margin-bottom: 2.5rem;
+        border-radius: 0 0 25px 25px;
+        box-shadow: 0 10px 25px rgba(255, 142, 142, 0.2);
+    }
+    .our-header h1 {
+        font-size: 3rem;
+        margin-bottom: 0.8rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+    .our-header p {
+        font-size: 1.3rem;
+        max-width: 700px;
+        margin: 0 auto 1.5rem;
+        opacity: 0.95;
+        line-height: 1.6;
+    }
+    .back-btn {
+        display: inline-block;
+        margin-top: 1rem;
+        padding: 0.8rem 2rem;
+        background: white;
+        color: #ff6b6b;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transition: all 0.3s;
+        border: 2px solid white;
+    }
+    .back-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        background: transparent;
+        color: white;
+    }
+    .gallery-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .intro-text {
+        text-align: center;
+        font-size: 1.2rem;
+        color: #5a6c7d;
+        margin-bottom: 2.5rem;
+        padding: 0 1rem;
+        line-height: 1.7;
+    }
+    .decoration {
+        text-align: center;
+        font-size: 2.5rem;
+        margin: 2rem 0 3rem;
+        color: #ff6b6b;
+        letter-spacing: 0.5rem;
+    }
+    .photo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 2rem;
+    }
+    .photo-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(255, 107, 107, 0.1);
+        transition: all 0.4s ease;
+        border: 1px solid rgba(255, 107, 107, 0.2);
+        position: relative;
+    }
+    .photo-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(255, 107, 107, 0.15);
+    }
+    .photo-card img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.5s ease;
+    }
+    .photo-card:hover img {
+        transform: scale(1.05);
+    }
+    .photo-info {
+        padding: 1.5rem;
+    }
+    .photo-info h3 {
+        color: #264653;
+        margin-bottom: 0.5rem;
+        font-size: 1.3rem;
+        font-weight: 600;
+    }
+    .photo-info p {
+        color: #5a6c7d;
+        margin-bottom: 0.8rem;
+        line-height: 1.5;
+        font-size: 0.95rem;
+    }
+    .photo-info small {
+        color: #94a3b8;
+        font-size: 0.85rem;
+    }
+    .no-photos {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding: 4rem 2rem;
+        background: #f8fafc;
+        border-radius: 20px;
+        border: 2px dashed #cbd5e1;
+        margin: 2rem 0;
+    }
+    .no-photos p {
+        color: #64748b;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+    }
+    .no-photos a {
+        color: #ff6b6b;
+        font-weight: 600;
+        text-decoration: none;
+        border-bottom: 2px dotted #ff6b6b;
+    }
+    .no-photos a:hover {
+        color: #2a9d8f;
+        border-bottom-color: #2a9d8f;
+    }
+    .admin-hint {
+        background: #ffe6e6;
+        padding: 1rem;
+        border-radius: 10px;
+        margin-top: 1.5rem;
+        font-size: 0.9rem;
+        color: #ff4757;
+        text-align: center;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Адаптивность */
+    @media (max-width: 768px) {
+        .our-header { padding: 2.5rem 1.5rem 1.5rem; }
+        .our-header h1 { font-size: 2.5rem; }
+        .our-header p { font-size: 1.1rem; }
+        .photo-grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; }
+        .gallery-container { padding: 0 1rem; }
+    }
+    @media (max-width: 600px) {
+        .photo-grid { grid-template-columns: 1fr; }
+        .our-header h1 { font-size: 2.2rem; }
+        .decoration { font-size: 2rem; letter-spacing: 0.3rem; }
+        .back-btn { width: 100%; max-width: 250px; }
+    }
+</style>
 {% endblock %}

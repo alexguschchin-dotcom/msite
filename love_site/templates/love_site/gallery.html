@@ -1,149 +1,159 @@
 {% extends 'love_site/base.html' %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Наша галерея 📸</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-            background: #f8f9fa;
-            color: #333;
-        }
-        .navbar {
-            background: white;
-            padding: 1rem 2rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 3rem;
-        }
-        .nav-links a {
-            color: #10b981;
-            text-decoration: none;
-            margin-left: 1.5rem;
-            font-weight: 600;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        h1 {
-            text-align: center;
-            color: #10b981;
-            margin-bottom: 2rem;
-            font-size: 2.8rem;
-        }
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-        .photo-item {
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-            transition: transform 0.3s;
-            position: relative;
-        }
-        .photo-item:hover {
-            transform: translateY(-5px);
-        }
-        .photo-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            display: block;
-        }
-        .photo-info {
-            padding: 1.5rem;
-        }
-        .photo-info h3 {
-            color: #1f2937;
-            margin-bottom: 0.5rem;
-        }
-        .photo-type {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(0,0,0,0.7);
-            color: white;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-        }
-        .baby-badge {
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-        }
-        .our-badge {
-            background: linear-gradient(45deg, #10b981, #059669);
-        }
-        .empty-message {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 4rem;
-            color: #888;
-            font-size: 1.2rem;
-        }
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: #888;
-            margin-top: 4rem;
-        }
-    </style>
-</head>
-<body>
-    <nav class="navbar">
-        <a href="/main/" style="font-size: 1.2rem; font-weight: bold; color: #10b981;">← На главную</a>
-        <div class="nav-links">
-            <a href="/memories/">Воспоминания</a>
-            <a href="/treasure/">Сокровище</a>
-            <a href="/our-photos/">Наши фото</a>
-            <a href="/secret/">Секрет</a>
-        </div>
-    </nav>
-
-    <div class="container">
-        <h1>📸 Наша галерея</h1>
-        <p style="text-align: center; margin-bottom: 2rem; color: #666;">
-            Здесь собраны все фото: маленького сокровища и наши фотографии
-        </p>
-        
-        <div class="gallery-grid">
-            {% for item in photos %}
-            <div class="photo-item">
-                {% if item.type == 'baby' %}
-                <span class="photo-type baby-badge">👶 Сокровище</span>
-                {% else %}
-                <span class="photo-type our-badge">💑 Наши фото</span>
-                {% endif %}
-                
-                <img src="{{ item.image_url }}" alt="{{ item.title }}">
-                <div class="photo-info">
-                    <h3>{{ item.title }}</h3>
-                    <p>{{ item.description }}</p>
-                    <small>Добавлено: {{ item.uploaded_date|date:"d.m.Y" }}</small>
-                </div>
+<!-- Уникальное содержимое галереи -->
+<div class="page-container">
+    <h1 class="page-title">📸 Наша галерея</h1>
+    <p class="page-subtitle">Здесь собраны все фото: маленького сокровища и наши фотографии</p>
+    
+    <div class="gallery-grid">
+        {% for item in photos %}
+        <div class="photo-card">
+            {% if item.type == 'baby' %}
+            <span class="photo-badge baby-badge">👶 Сокровище</span>
+            {% else %}
+            <span class="photo-badge our-badge">💑 Наши фото</span>
+            {% endif %}
+            
+            <img src="{{ item.image_url }}" alt="{{ item.title }}" loading="lazy">
+            <div class="photo-info">
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.description }}</p>
+                <small>Добавлено: {{ item.uploaded_date|date:"d.m.Y" }}</small>
             </div>
-            {% empty %}
-            <div class="empty-message">
-                <p>Пока в галерее нет фотографий.</p>
-                <p>Добавьте их через <a href="/admin/" style="color:#10b981;">админ-панель</a>!</p>
-            </div>
-            {% endfor %}
         </div>
+        {% empty %}
+        <div class="empty-message">
+            <p>Пока в галерее нет фотографий.</p>
+            <p>Добавьте их через <a href="/admin/">админ-панель</a>!</p>
+        </div>
+        {% endfor %}
     </div>
+</div>
 
-    <footer>
-        <p>Лучшие моменты остаются на фотографиях. 📷❤️</p>
-    </footer>
-</body>
-</html>
+<style>
+    /* Стили ТОЛЬКО для галереи */
+    .page-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+    .page-title {
+        text-align: center;
+        color: #2a9d8f;
+        margin-bottom: 1rem;
+        font-size: 2.8rem;
+        font-weight: 700;
+    }
+    .page-subtitle {
+        text-align: center;
+        color: #5a6c7d;
+        margin-bottom: 3rem;
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.6;
+    }
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 2rem;
+    }
+    .photo-card {
+        background: white;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(42, 157, 143, 0.1);
+        transition: all 0.4s ease;
+        border: 1px solid rgba(42, 157, 143, 0.1);
+        position: relative;
+    }
+    .photo-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 35px rgba(42, 157, 143, 0.15);
+    }
+    .photo-card img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.5s ease;
+    }
+    .photo-card:hover img {
+        transform: scale(1.03);
+    }
+    .photo-info {
+        padding: 1.5rem;
+    }
+    .photo-info h3 {
+        color: #264653;
+        margin-bottom: 0.5rem;
+        font-size: 1.3rem;
+        font-weight: 600;
+    }
+    .photo-info p {
+        color: #5a6c7d;
+        margin-bottom: 0.8rem;
+        line-height: 1.5;
+        font-size: 0.95rem;
+    }
+    .photo-info small {
+        color: #94a3b8;
+        font-size: 0.85rem;
+    }
+    .photo-badge {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        color: white;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        z-index: 2;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    }
+    .baby-badge {
+        background: linear-gradient(45deg, #e76f51, #f4a261);
+    }
+    .our-badge {
+        background: linear-gradient(45deg, #2a9d8f, #4cc9a8);
+    }
+    .empty-message {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding: 4rem 2rem;
+        background: #f8fafc;
+        border-radius: 20px;
+        border: 2px dashed #cbd5e1;
+        margin: 2rem 0;
+    }
+    .empty-message p {
+        color: #64748b;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+    }
+    .empty-message a {
+        color: #2a9d8f;
+        font-weight: 600;
+        text-decoration: none;
+        border-bottom: 2px dotted #2a9d8f;
+    }
+    .empty-message a:hover {
+        color: #e76f51;
+        border-bottom-color: #e76f51;
+    }
+
+    /* Адаптивность для галереи */
+    @media (max-width: 768px) {
+        .page-container { padding: 1.5rem; }
+        .page-title { font-size: 2.3rem; }
+        .page-subtitle { font-size: 1.1rem; padding: 0 1rem; }
+        .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; }
+    }
+    @media (max-width: 600px) {
+        .gallery-grid { grid-template-columns: 1fr; }
+        .page-title { font-size: 2rem; }
+    }
+</style>
 {% endblock %}
