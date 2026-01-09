@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Для самой особенной 💖 | Наш 2025</title>
     <style>
+        /* Гибкие изображения */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, sans-serif;
@@ -74,6 +81,77 @@
             color: rgba(255, 255, 255, 0.7);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
+        /* ===================== АДАПТИВНОСТЬ ДЛЯ ТЕЛЕФОНОВ ===================== */
+/* Стили сработают на экранах уже 768px (планшеты и телефоны) */
+@media (max-width: 768px) {
+    /* 1. Навигация: сделаем меню вертикальным */
+    .nav-links {
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+    .nav-links a {
+        margin-left: 0;
+        text-align: center;
+        padding: 0.8rem;
+        background: rgba(255,255,255,0.1);
+        border-radius: 8px;
+    }
+
+    /* 2. Главный заголовок: уменьшим размер */
+    .hero h1 {
+        font-size: 2.5rem;
+        line-height: 1.2;
+    }
+
+    /* 3. Карточки на главной: сделаем одну колонку */
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* 4. Галерея (все фото): одна колонка */
+    .gallery-grid,
+    .photo-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    /* 5. Воспоминания: уменьшим отступы */
+    .memory-card {
+        padding: 1.5rem;
+    }
+
+    /* 6. Секретное сообщение: уменьшим отступы контейнера */
+    .secret-container {
+        padding: 2rem;
+        width: 95%;
+    }
+
+    /* 7. Кнопки: сделаем удобными для нажатия */
+    .btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 1rem;
+    }
+}
+
+/* Стили для очень маленьких экранов (уже 480px) */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    .header h1 {
+        font-size: 2.2rem;
+    }
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .nav-links {
+        width: 100%;
+    }
+}
     </style>
 </head>
 <body>
